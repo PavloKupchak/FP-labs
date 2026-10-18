@@ -1,4 +1,5 @@
 import json
+import runpy
 from pathlib import Path
 
 import pytest
@@ -54,3 +55,11 @@ def test_main_reads_file_and_prints(
     out = capsys.readouterr().out
     assert "Receipt #2" in out
     assert "Total: 650.00" in out
+
+
+def test_script_entry_point(capsys: pytest.CaptureFixture[str]) -> None:
+    app_path = Path(__file__).resolve().parent.parent / "app.py"
+    runpy.run_path(str(app_path), run_name="__main__")
+    out = capsys.readouterr().out
+    assert "Receipt #1" in out
+    assert "Total: 3030.00" in out
