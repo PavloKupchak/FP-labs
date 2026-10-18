@@ -7,9 +7,12 @@ on:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        lab: [Lab_01, Lab_03]
     defaults:
       run:
-        working-directory: Lab_01
+        working-directory: ${{ matrix.lab }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
