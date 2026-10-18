@@ -2,6 +2,7 @@ from copy import deepcopy
 
 import pytest
 
+from app import render_receipt, render_report, run
 from core import (
     Reading,
     compose,
@@ -127,3 +128,48 @@ def test_compose_and_multiplier() -> None:
 
 def test_stamp_amount_injected_time() -> None:
     assert stamp_amount(5.0, lambda: 123.0) == (5.0, 123.0)
+
+
+def test_render_receipt_and_report(
+    sample_readings: list[Reading],
+    rates: dict[str, float],
+    benefit_shares: dict[str, float],
+) -> None:
+    result = process_readings_pure(
+        sample_readings,
+        rates=rates,
+        benefit_shares=benefit_shares,
+        min_consumption=1.0,
+    )
+    receipt = render_receipt(result["bills"][0])
+    report = render_report(result)
+    assert "Receipt #1" in receipt
+    assert "600.00" in receipt
+    assert "Count: 2" in report
+    assert "Total: 1000.00" in report
+
+
+def test_run_prints_report(
+    sample_readings: list[Reading], capsys: pytest.CaptureFixture[str]
+) -> None:
+    run([{"id": 1, "prev": 0.0, "curr": 10.0, "group": "household"}])
+    assert "Receipt #1" in capsys.readouterr().out
+
+
+def test_empty_input() -> None:
+    result = process_readings_pure([], rates={}, benefit_shares={}, min_consumption=0.0)
+    assert result == {"count": 0, "consumption": 0, "amount": 0, "bills": []}
+
+
+def test_generator_input(
+    sample_readings: list[Reading],
+    rates: dict[str, float],
+    benefit_shares: dict[str, float],
+) -> None:
+    result = process_readings_pure(
+        (r for r in sample_readings),
+        rates=rates,
+        benefit_shares=benefit_shares,
+        min_consumption=1.0,
+    )
+    assert result["count"] == 2
