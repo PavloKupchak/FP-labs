@@ -11,7 +11,7 @@ from core import (
     make_group_benefit,
     make_min_consumption_filter,
     make_multiplier,
-    make_processor,
+    make_reading_processor,
     process_readings_pure,
     stamp_amount,
     with_bill,
@@ -88,7 +88,7 @@ def test_process_values(
 
 
 def test_callable_policies(sample_readings: list[Reading]) -> None:
-    processor = make_processor(
+    processor = make_reading_processor(
         accept=lambda c: c > 0,
         tariff=lambda group, c: c * 2.0,
         benefit=lambda group, amount: amount - 10.0,
@@ -99,7 +99,7 @@ def test_callable_policies(sample_readings: list[Reading]) -> None:
 
 
 def test_processor_is_replaceable(sample_readings: list[Reading]) -> None:
-    processor = make_processor(
+    processor = make_reading_processor(
         accept=lambda c: True,
         tariff=lambda group, c: c,
         benefit=lambda group, amount: amount,
