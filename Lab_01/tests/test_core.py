@@ -6,6 +6,7 @@ from core import (
     Reading,
     compose,
     consumption_of,
+    identity,
     is_valid_reading,
     make_flat_tariff,
     make_group_benefit,
@@ -146,3 +147,8 @@ def test_generator_input(
         min_consumption=1.0,
     )
     assert result["count"] == 2
+
+
+def test_identity() -> None:
+    assert identity(5) == 5
+    assert identity("x") == "x"
