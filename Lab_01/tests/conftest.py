@@ -1,6 +1,6 @@
 import pytest
 
-from core import Reading
+from core import Order, Reading
 
 
 @pytest.fixture
@@ -21,3 +21,17 @@ def rates() -> dict[str, float]:
 @pytest.fixture
 def benefit_shares() -> dict[str, float]:
     return {"pensioner": 0.5}
+
+
+@pytest.fixture
+def sample_orders() -> list[Order]:
+    return [
+        {"id": 1, "items": [{"price": 50.0, "qty": 3}], "paid": True},
+        {"id": 2, "items": [{"price": 10.0, "qty": 2}], "paid": True},
+        {"id": 3, "items": [{"price": 200.0, "qty": 1}], "paid": False},
+        {
+            "id": 4,
+            "items": [{"price": 40.0, "qty": 2}, {"price": 30.0, "qty": 1}],
+            "paid": True,
+        },
+    ]
