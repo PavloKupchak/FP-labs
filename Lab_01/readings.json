@@ -1,0 +1,7 @@
+[
+  {"id": 1, "prev": 100.0, "curr": 250.0, "group": "household"},
+  {"id": 2, "prev": 0.0, "curr": 200.0, "group": "pensioner"},
+  {"id": 3, "prev": 500.0, "curr": 400.0, "group": "commercial"},
+  {"id": 4, "prev": 10.0, "curr": 10.0, "group": "household"},
+  {"id": 5, "prev": 1000.0, "curr": 1300.0, "group": "commercial"}
+]

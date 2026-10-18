@@ -1,0 +1,24 @@
+[project]
+name = "lab-01"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "pytest",
+    "hypothesis",
+    "mypy",
+    "ruff",
+    "black",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.mypy]
+strict = true
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
