@@ -8,6 +8,7 @@ jobs:
   checks:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         lab: [Lab_01, Lab_03, Lab_04]
     defaults:
