@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        lab: [Lab_01, Lab_03]
+        lab: [Lab_01, Lab_03, Lab_04]
     defaults:
       run:
         working-directory: ${{ matrix.lab }}
