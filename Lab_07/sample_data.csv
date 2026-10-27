@@ -1,0 +1,7 @@
+guest,nights,room_type,price,status
+  alice smith ,3, Deluxe ,120.0,Confirmed
+bob stone,1,standard,70.0,cancelled
+Carol Day,5,Suite,200.0, confirmed
+denis kray,2,standard,80.0,pending
+Eva Moon,4,deluxe,110.0,CONFIRMED
+Frank Ode,7,standard,65.0,confirmed

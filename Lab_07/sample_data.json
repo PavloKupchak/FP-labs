@@ -1,0 +1,8 @@
+[
+  {"guest": "  alice smith ", "nights": 3, "room_type": " Deluxe ", "price": 120.0, "status": "Confirmed"},
+  {"guest": "bob stone", "nights": 1, "room_type": "standard", "price": 70.0, "status": "cancelled"},
+  {"guest": "Carol Day", "nights": 5, "room_type": "Suite", "price": 200.0, "status": " confirmed"},
+  {"guest": "denis kray", "nights": 2, "room_type": "standard", "price": 80.0, "status": "pending"},
+  {"guest": "Eva Moon", "nights": 4, "room_type": "deluxe", "price": 110.0, "status": "CONFIRMED"},
+  {"guest": "Frank Ode", "nights": 7, "room_type": "standard", "price": 65.0, "status": "confirmed"}
+]
